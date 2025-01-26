@@ -20,12 +20,12 @@ To design an stock exchange project
 ### Back-of-the-envelop estimation
 - **100 symbols**
 - **500 million orders per day**
-- **Stock market** is open Saturday through Thursday from 9:30 am to 4:00 pm Asia/Tehran.  
-  That’s **6.5 hours in total**.
+- **Stock market** is open Saturday through Thursday from 9:00 AM to 12:30 PM Asia/Tehran.  
+  That’s **3.5 hours in total**.
 - **QPS (Queries Per Second):**  
-  QPS = 500 million ÷ (6.5 × 3,600) ≈ 21,500
+  QPS = 500 million ÷ (3.5 × 3,600) ≈ 40,000
 - **Peak QPS:**  
-  Peak QPS = 5 × QPS = 107,500  
+  Peak QPS = 5 × QPS = 200,000  
 
   The trading volume is significantly higher when the market first opens in the morning and before it closes in the afternoon.
 
