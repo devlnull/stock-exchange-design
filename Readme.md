@@ -17,24 +17,16 @@ To design an stock exchange project
 - Latency: Th round-trip latency should be at the milisecond level, with a particular focus on the 99th percentile latency. The round trip latency is measured from the moment a market order enters the exchange to the point where the market order returns as a filled execution. A persistently high 99th percentile latency causes a terrible user experience for a small number of users.
 - Security: The exchange should have an account management system. For legal and compilance, the exchange performs KYC(Know Your Client) check to verify a user's identity before a new account is opened. For public resources, such as web pages containing market data, we should prevent distribute denial-of-service(DDoS) attacks.
 
-
 ### Back-of-the-envelop estimation
 - **100 symbols**
-
-- **1 billion orders per day**
-
-- **NYSE Stock exchange** is open Monday through Friday from 9:30 am to 4:00 pm Eastern Time.  
+- **500 million orders per day**
+- **Stock market** is open Saturday through Thursday from 9:30 am to 4:00 pm Asia/Tehran.  
   That’s **6.5 hours in total**.
-
 - **QPS (Queries Per Second):**  
-  $$
-  \text{QPS} = \frac{1 \, \text{billion}}{6.5 \times 3,600} \approx 43,000
-  $$
-
+  QPS = 500 million ÷ (6.5 × 3,600) ≈ 21,500
 - **Peak QPS:**  
-  $$
-  5 \times \text{QPS} = 215,000
-  $$
+  Peak QPS = 5 × QPS = 107,500  
+
   The trading volume is significantly higher when the market first opens in the morning and before it closes in the afternoon.
 
 ### High-Level Design
