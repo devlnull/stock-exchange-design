@@ -49,9 +49,22 @@ FIX protocol, which stands for Financial Information exchange protocol, was crea
 54=1 | 38=15 | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 |
 ```
 
-
 ### High-Level Design
 ![High Level Design](./assets/StochExchange_HighLevelDesign.svg)
+
+#### Critical Path
+- 1:      A client places an order via the broker's web or mobile app.
+- 2:      The broker sends the order to the exchange.
+- 3:      The broker enters the exchange through the client gateway. The client gateway performs basic gatekeeeping functions such as input validation, rate limiting, authentication, normalizationm etc, The client gateway then forwards the order to thec order manager.
+- 4~5:    The order manager performs risk checks based on rules set by the risk manager.
+- 6:      After passing risk checks, the order manager verifies therre are sufficient funds in the wallet for the order.
+- 7~9:    The order is sent to the matching engine. When a match is found, the matching engine emits two execution(also called fills), with one each for the buy and sell sides. To guarantee that matching results are deterministic when replayed, both orders and executions are sequenced in the sequencer.
+- 10~14:  The execution are returned to the client.
+
+#### Reporting Flow
+- 1~2:      The reporter collects all the necessary reporting fields(e.g. client_id, price, quantity, order_type, filled_quantity, remaining_quantity) from orders and executions, and writes the consolidated records to the database.
+
+
 ### API Design
 ### Data Model
 ### Performance
