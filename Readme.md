@@ -29,7 +29,29 @@ To design an stock exchange project
 
   The trading volume is significantly higher when the market first opens in the morning and before it closes in the afternoon.
 
+### Busienss Knowledge
+#### Broker
+Brokers provide a user friendly interface for retail users to place trades and view market data.
+
+#### Institutional Clients
+Institutional clients trade large volumes using special trading softwares, They don't trade frequently but when they do, it's a large volume, so they need some functions like order splitting to minimize the market impact.
+
+#### Limit Order
+A limit order is a buy or sell with a fixed price, it might not match immediately or it might just be partially matched.
+
+#### Market Order
+Market order doesn't specify a price, it is executed at a prevailing market price immediately, A market order sacrifices cost is order to guarantee the execution. it is usefull in certain fast-moving market conditions.
+
+#### FIX
+FIX protocol, which stands for Financial Information exchange protocol, was created in 1991. It is a vendur-neutral communication protocol for exchanging securities transaction information. Below shows an example of FIX:
+```
+8=FIX.4.2 | 9=176 | 35=8 | 49=PHLX | 56=PERS | 52=20071123-05:30:00.000 | 11=ATOMNOCCC9990900 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS |
+54=1 | 38=15 | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 |
+```
+
+
 ### High-Level Design
+![High Level Design](./assets/StochExchange_HighLevelDesign.svg)
 ### API Design
 ### Data Model
 ### Performance
