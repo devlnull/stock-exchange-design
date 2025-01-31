@@ -29,30 +29,12 @@ To design an stock exchange project
 
   The trading volume is significantly higher when the market first opens in the morning and before it closes in the afternoon.
 
-### Busienss Knowledge
-#### Broker
-Brokers provide a user friendly interface for retail users to place trades and view market data.
-
-#### Institutional Clients
-Institutional clients trade large volumes using special trading softwares, They don't trade frequently but when they do, it's a large volume, so they need some functions like order splitting to minimize the market impact.
-
-#### Limit Order
-A limit order is a buy or sell with a fixed price, it might not match immediately or it might just be partially matched.
-
-#### Market Order
-Market order doesn't specify a price, it is executed at a prevailing market price immediately, A market order sacrifices cost is order to guarantee the execution. it is usefull in certain fast-moving market conditions.
-
-#### FIX
-FIX protocol, which stands for Financial Information exchange protocol, was created in 1991. It is a vendur-neutral communication protocol for exchanging securities transaction information. Below shows an example of FIX:
-```
-8=FIX.4.2 | 9=176 | 35=8 | 49=PHLX | 56=PERS | 52=20071123-05:30:00.000 | 11=ATOMNOCCC9990900 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS |
-54=1 | 38=15 | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 |
-```
+### [Busienss Knowledge](./Business.md)
 
 ### High-Level Design
-![High Level Design](./assets/StochExchange_HighLevelDesign.svg)
+![High Level Design](./assets/StockExchange_HighLevelDesign.svg)
 
-#### Critical Path
+#### Trading Flow
 - 1:      A client places an order via the broker's web or mobile app.
 - 2:      The broker sends the order to the exchange.
 - 3:      The broker enters the exchange through the client gateway. The client gateway performs basic gatekeeeping functions such as input validation, rate limiting, authentication, normalizationm etc, The client gateway then forwards the order to thec order manager.
@@ -64,7 +46,12 @@ FIX protocol, which stands for Financial Information exchange protocol, was crea
 #### Reporting Flow
 - 1~2:      The reporter collects all the necessary reporting fields(e.g. client_id, price, quantity, order_type, filled_quantity, remaining_quantity) from orders and executions, and writes the consolidated records to the database.
 
+### Modules
+- [Matching Engine](./MatchingEngine.md)
+- [Sequencer](Sequencer.md)
+- [Order Manager](./OrderManager.md)
+- [Client Gateway](./ClientGateway.md)
 
-### API Design
-### Data Model
+### [API Design](./ApiDesign.md)
+### [Data Model](./DataModel.md)
 ### Performance
