@@ -20,3 +20,38 @@ An efficient data structure for an order book must satisfy these requirements:
 -	Fast add/cancel/execute operations, preferably `O(1)` time complexity. Operations include: placing a new order, canceling an order, and matching an order.
 -   Query best bid/ask.
 -	Iterate through price levels.
+
+![Order Share](./assets/StockExchange_OrderShare.svg)
+
+In the example above, there is a large market buy order for 2,700 shares of X. 
+The buy order matches all the sell orders in the best ask queue and the first sell order in the 100.11 price queue.
+After fulfilling this large order, the bid/ask spread widens, and the price increases by one level (best ask is 100.11 now).
+
+```csharp
+class PriceLevel{
+    public Price LimitPrice {get; private set;}
+    public long TotalVolume {get; private set;}
+    public LinkedList<Order> Orders {get; private set;}
+}
+class Book<Side>{
+    public Side Side {get; private set;}
+    public Dictionary<Price, PriceLevel> LimitDictionary {get; private set;}
+}
+class OrderBook{
+    public Book<Buy> BuyBook {get; private set;}
+    public Book<Sell> SellBook {get; private set;}
+    public PriceLevel BestBid {get; private set;}
+    public PriceLevel BestOffer {get; private set;}
+    public Dictionary<OrderID, Order> OrderDictionary {get; private set;}
+}
+```
+Let's review how we achieve O(1) time complexity for these operations:
+1.	Placing a new order means adding a new Order to the tail of the PriceLevel. This is O(1) time complexity for a doubly-linked list.
+2.	Matching an order means deleting an Order from the head of the PriceLevel. This is O(1) time complexity for a doubly-linked list.
+3.	Canceling an order means deleting an Order from the OrderBook. 
+We leverage the helper data structure Dictionary<OrderID, Order> OrderDictionary in the OrderBook to find the Order to cancel in 0(1) time.
+Once the order is found, if the “Orders” list was a singly-linked list, the code would have to traverse the entire list to locate the previous pointer in order to delete the order. 
+That would have taken O(n) time. \
+Since the list is now doubly-linked, the order itself has a pointer to the previous order, which allows the code to delete the order without traversing the entire order list.
+
+![Buy Book](./assets/StockExchange_BuyBook.svg)
