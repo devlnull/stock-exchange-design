@@ -54,4 +54,29 @@ To design an stock exchange project
 
 ### [API Design](./ApiDesign.md)
 ### [Data Model](./DataModel.md)
-### Performance
+### [Performance](./Performance.md)
+### [High Availability](./Availability.md)
+### [Matching Algorithm](./MathcingAlgorithm.md)
+
+## References
+- Chatgpt, https://chatgpt.com
+- IEX attracts investors by “playing fair”, also is the “Flash Boys Exchange”, https://en.wikipedia.org/wiki/IEX
+- NYSE matched volume, https://www.nyse.com/markets/us-equity-volumes
+-	All of the World's Stock Exchanges by Size, http://money.visualcapitalist.com/all-of-the-worlds-stock-exchanges-by-size/
+-	Denial of sendee attack. https://en.wikipedia.org/wiki/Denial-of-service_attack
+-	Market impact. https://en.wikipedia.org/wiki/Market_impact
+-	Fix trading, https://www.fixtrading.org/
+-	Event Sourcing. https://martinfowler.com/eaaDev/EventSourcing.html
+- CME Co-Location and Data Center Services, https://www.cmegroup.com/trading/colocation/co-location-services.html
+- Epoch, https://www.epochl01.com/
+- Order book, https://www.investopedia.eom/terms/o/order-book.asp
+- Order book. https://en.wikipedia.org/wiki/Order_book
+- How to Build a Fast Limit Order Book. https://bit.ly/3ngMtEO
+- Developing with kdb+ and the q language, https://code.kx.eom/q/
+- Latency Numbers Every Programmer Should Know, https://gist.github.com/jboner/2841832
+- mmap. https://en.wikipedia.org/wiki/Memory_map
+- Context switch https://bit.ly/3pva7A6.
+- Reliable User Datagram Protocol. https://en.wikipedia.org/wiki/Reliable_User_Datagram_Protocol
+- Chaos engineering. https://en.wikipedia.org/wiki/Chaos_engineering
+- Raft, https://raft.github.io/
+- Designing for Understandability: the Raft Consensus Algorithm. https://raft.github.io/slides/uiuc2016.pdf
