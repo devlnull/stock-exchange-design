@@ -1,6 +1,12 @@
 # Availability
 For high availability, our design aims for (`99.99%`). \
-This means the exchange can only have `8.64` seconds of downtime per day. \
+This means the exchange can only have `1.26` seconds of downtime per day. \
+```
+~1.26 seconds per day
+~8.82 seconds per week
+~37.8 seconds per month
+~7.67 minutes per year
+```
 It requires almost immediate recovery if a service goes down. \
 To achieve high availability; consider the following:
 - First, identify single-point-of-failures in the exchange architecture. For example, the failure of the matching engine could be a disaster for the exchange. Iherefore, we set up redundant instances alongside the primary' instance.
